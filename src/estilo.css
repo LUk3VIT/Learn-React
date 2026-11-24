@@ -1,0 +1,244 @@
+/* Estilo simples para o projeto de estudo (não é o foco aqui) */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f0f3f6;
+  color: #333;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Menu das aulas --- */
+.menu {
+  width: 270px;
+  background: #34495e;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu h1 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0 6px 12px;
+}
+
+.menu button {
+  text-align: left;
+  background: transparent;
+  color: #c9d6e0;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu button.ativo {
+  background: #4a9e86;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* --- Área da aula --- */
+.conteudo {
+  flex: 1;
+  padding: 28px 36px;
+  overflow-y: auto;
+}
+
+.conteudo h2 {
+  color: #435c75;
+  margin-bottom: 6px;
+}
+
+.conteudo h3 {
+  color: #435c75;
+  margin: 22px 0 8px;
+}
+
+.conteudo p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.dica {
+  background: #e6f3ef;
+  border-left: 4px solid #4a9e86;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-size: 0.92rem;
+}
+
+.caixa {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cartao {
+  display: inline-block;
+  width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 6px 10px 6px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  vertical-align: top;
+}
+
+.cartao.inativo {
+  opacity: 0.5;
+}
+
+.selo {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: #f39c12;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+button.btn {
+  background: #4a9e86;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.92rem;
+  cursor: pointer;
+  margin: 4px 6px 4px 0;
+}
+
+button.btn:hover {
+  background: #3b8772;
+}
+
+button.btn.secundario {
+  background: #e0e6ed;
+  color: #333;
+}
+
+button.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input[type='text'],
+input[type='password'] {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin: 4px 6px 4px 0;
+}
+
+.erro {
+  color: #b42318;
+  background: #fdecea;
+  border: 1px solid #f5c2bd;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+.sucesso {
+  color: #1e6b45;
+  background: #e6f3ef;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+ul.lista {
+  list-style: none;
+  margin: 8px 0;
+}
+
+ul.lista li {
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cheio {
+  color: #e76e56;
+  font-weight: 600;
+}
+
+.livre {
+  color: #3e9652;
+  font-weight: 600;
+}
+
+/* --- Modal (janela) --- */
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-cartao {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.modal-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-fechar {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #888;
+}
+
+canvas {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  margin-top: 8px;
+}
+
+.codigo {
+  text-align: center;
+  font-size: 1.6rem !important;
+  letter-spacing: 10px;
+  width: 220px;
+}
