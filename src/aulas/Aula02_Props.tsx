@@ -20,11 +20,12 @@ type CartaoUsuarioProps = {
   nome: string
   cargo: 'colaborador' | 'admin' // só aceita estes dois textos
   ativo?: boolean // o "?" quer dizer: opcional (pode não ser passada)
+  email?: string // opcional, só para o exercício
 }
 
 // 2. O componente recebe as props e "desmonta" o objeto direto nos parênteses.
 //    ativo = true: valor padrão quando ninguém passar "ativo".
-function CartaoUsuario({ nome, cargo, ativo = true }: CartaoUsuarioProps) {
+function CartaoUsuario({ nome, cargo, ativo = true, email }: CartaoUsuarioProps) {
   return (
     // className também pode ser montada com { }: aqui junta "cartao" + "inativo"
     <div className={ativo ? 'cartao' : 'cartao inativo'}>
@@ -33,6 +34,7 @@ function CartaoUsuario({ nome, cargo, ativo = true }: CartaoUsuarioProps) {
       {/* && : só desenha o selo se for admin (mais sobre isso na aula 6) */}
       {cargo === 'admin' && <span className="selo">ADMIN</span>}
       {!ativo && <p>(conta desativada)</p>}
+      {email && <p>E-mail: {email}</p>}
     </div>
   )
 }
@@ -52,10 +54,12 @@ function Horario({ inicio, fim, ocupados, limite }: HorarioProps) {
       <strong>
         {inicio} - {fim}
       </strong>{' '}
-      — {ocupados}/{limite} ocupados, {vagas === 0 ? 'cheio' : `${vagas} vaga(s)`}
+      — {ocupados}/{limite} ocupados, {vagas === 0 ? <span className="cheio">cheio</span> : <span className="livre">{vagas} vaga(s)</span>}, 
     </div>
   )
 }
+
+<p className="cheio"></p>
 
 export function Aula02() {
   return (
@@ -63,9 +67,9 @@ export function Aula02() {
       <h2>Aula 2: Props</h2>
 
       <h3>O mesmo componente, com props diferentes</h3>
-      <CartaoUsuario nome="Lucas" cargo="admin" />
-      <CartaoUsuario nome="Ana" cargo="colaborador" />
-      <CartaoUsuario nome="Bruno" cargo="colaborador" ativo={false} />
+      <CartaoUsuario nome="Lucas" cargo="admin" email="lucs@gmail.com" />
+      <CartaoUsuario nome="Ana" cargo="colaborador" email="ana@gmail.com"/>
+      <CartaoUsuario nome="Bruno" cargo="colaborador" email="bruno@gmail.com" ativo={false} />
 
       {/* Texto vai entre aspas. Qualquer outra coisa (número, booleano,
           variável) vai entre chaves: ativo={false}, ocupados={3} */}
@@ -73,6 +77,7 @@ export function Aula02() {
       <h3>Parecido com a agenda</h3>
       <Horario inicio="11:30" fim="11:45" ocupados={3} limite={4} />
       <Horario inicio="11:45" fim="12:00" ocupados={4} limite={4} />
+      <Horario inicio="12:00" fim="12:15" ocupados={0} limite={4} />
 
       <p className="dica">
         Teste o TypeScript: escreva &lt;CartaoUsuario nome=&quot;Zé&quot; cargo=&quot;gerente&quot; /&gt;
