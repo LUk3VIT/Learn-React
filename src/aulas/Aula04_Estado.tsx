@@ -57,13 +57,16 @@ function Contador() {
   console.log('Desenhando o Contador com valor', contador)
 
   return (
-    <div className="caixa">
-      <p>✅ Com useState: {contador}</p>
+    <div className={contador === 4 ? 'caixa cheio' : 'caixa'}>
+        <p>✅ Com useState: {contador}</p>
       <button className="btn" onClick={() => setContador(contador + 1)}>
         +1
       </button>
       <button className="btn secundario" onClick={() => setContador(0)}>
         Zerar
+      </button>
+      <button className="btn secundario" onClick={() => setContador(contador - 1)}>
+        -1
       </button>
     </div>
   )
@@ -84,6 +87,22 @@ function Interruptor() {
   )
 }
 
+function AgendaStatus() {
+  const [ mensagem, setMensagem ] = useState('Agenda liberada')
+
+  return (
+    <div className="caixa">
+      <p>{mensagem}</p>
+      <button className="btn" onClick={() => setMensagem('Agenda liberada')}>
+        Liberar
+      </button>
+      <button className="btn" onClick={() => setMensagem('Agenda bloqueada')}>
+        Bloquear
+      </button>
+    </div>
+  )
+}
+
 export function Aula04() {
   return (
     <section>
@@ -99,6 +118,9 @@ export function Aula04() {
 
       <h3>Estado booleano (abrir/fechar, ligar/desligar)</h3>
       <Interruptor />
+
+      <h3>Estado com texto (mensagem)</h3>
+      <AgendaStatus />
 
       <p className="dica">
         No sistema: o login usa estado para o texto dos campos, para a mensagem de erro e
