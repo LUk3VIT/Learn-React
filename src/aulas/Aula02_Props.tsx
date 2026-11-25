@@ -54,12 +54,10 @@ function Horario({ inicio, fim, ocupados, limite }: HorarioProps) {
       <strong>
         {inicio} - {fim}
       </strong>{' '}
-      — {ocupados}/{limite} ocupados, {vagas === 0 ? <span className="cheio">cheio</span> : <span className="livre">{vagas} vaga(s)</span>}, 
+      — {ocupados}/{limite} ocupados, {vagas === 0 ? <span className="cheio">cheio</span> : <span className="livre">{vagas} vaga(s)</span>}
     </div>
   )
 }
-
-<p className="cheio"></p>
 
 export function Aula02() {
   return (

@@ -24,15 +24,31 @@ import type { ReactNode } from 'react'
 type CaixaProps = {
   titulo: string
   children: ReactNode
+  rodape?: string
+}
+
+type AlertaProps = {
+  titulo: string
+  children: ReactNode
 }
 
 // A moldura: título + linha + o conteúdo que veio de fora
-function Caixa({ titulo, children }: CaixaProps) {
+function Caixa({ titulo, children, rodape }: CaixaProps) {
   return (
     <div className="caixa">
       <strong>{titulo}</strong>
       <hr style={{ margin: '8px 0', border: 'none', borderTop: '1px solid #eee' }} />
       {/* Aqui o React coloca o que foi escrito entre <Caixa> e </Caixa> */}
+      {children}
+      <p>{rodape}</p>
+    </div>
+  )
+}
+
+function Alerta({ titulo, children }: AlertaProps) {
+  return (
+    <div className="alerta">
+      <strong>{titulo}</strong>
       {children}
     </div>
   )
@@ -72,6 +88,20 @@ export function Aula03() {
         Repare no Caixa: ele não sabe e nem quer saber o que vem dentro. Só desenha a
         moldura e coloca o {'{children}'} no lugar certo. Na aula 7 isso vira um Modal.
       </p>
+
+      <Caixa titulo="Exercício 1" rodape="Rodapé do exercício 1">
+        <p>Acrescente a prop opcional "rodape?: string" no Caixa e mostre o rodapé embaixo do children (só se vier).</p>
+      </Caixa>
+
+      <Caixa titulo="Exercício 2">
+
+        <p>Crie um componente Alerta({'{ children }'}) que mostra o conteúdo com a classe "erro" do estilo.css.</p>
+
+        <Alerta titulo="Erro!">
+          <p className="erro">Senha errada!</p>
+        </Alerta> 
+        
+      </Caixa>
     </section>
   )
 }
