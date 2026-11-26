@@ -29,6 +29,8 @@ import { useState, type FormEvent } from 'react'
 
 export function Aula05() {
   const [nome, setNome] = useState('')
+  const [senha, setSenha] = useState('')
+  const [codigo, setCodigo] = useState('')
   const [erro, setErro] = useState('')
   const [nomes, setNomes] = useState<string[]>([]) // <string[]>: lista de textos
 
@@ -41,6 +43,14 @@ export function Aula05() {
       setErro('Digite um nome.')
       return
     }
+    if (senha.length < 6) {
+      setErro('A senha deve ter pelo menos 6 caracteres.')
+      return
+    }
+    if (codigo.length <= 6) {
+      setErro('O código de 2FA deve ter no máximo 6 dígitos numéricos.')
+      return
+    }
     if (nomes.includes(limpo)) {
       setErro(`${limpo} já está na lista (1 horário por pessoa!).`)
       return
@@ -48,6 +58,7 @@ export function Aula05() {
 
     setNomes([...nomes, limpo]) // lista nova = antigos + o novo
     setNome('') // limpa o campo (porque o campo mostra o estado)
+    setSenha('')
     setErro('')
   }
 
@@ -55,6 +66,7 @@ export function Aula05() {
     // filter também cria uma lista NOVA (sem o "quem")
     setNomes(nomes.filter((n) => n !== quem))
   }
+
 
   return (
     <section>
@@ -68,7 +80,19 @@ export function Aula05() {
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
-        <button className="btn" type="submit">
+        <input
+          type="password"
+          placeholder="Senha do colaborador"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Código de 2FA (opcional)"
+          value={codigo}
+          onChange={(e) => setCodigo(e.target.value.replace(/\D/g, '').slice(0, 6))}
+        />
+        <button className="btn" type="submit" disabled={nomes.length >= 4}>
           Marcar horário
         </button>
       </form>
